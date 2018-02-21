@@ -1,0 +1,11 @@
+commit defbe23a98c302e5d64bcbfda712a33bb2c7850d
+Author: Bladimir Dominguez <bdominguez@mines.edu>
+Date:   Wed Feb 21 14:23:52 2018 -0700
+
+    implemented part 1
+
+commit 3b376f6ef0f89212820b750a5e2a21e5b1268f2c
+Author: bladis98 <35470586+bladis98@users.noreply.github.com>
+Date:   Thu Feb 15 16:49:52 2018 -0700
+
+    Initial commit

@@ -6,29 +6,40 @@ import java.util.Scanner;
 
 public class ScoreTrakker {
 	private ArrayList<Student> list= new ArrayList<Student>();
+	private String[] files = {"scores.txt", "badscores.txt", "nofile.txt" };
 	/**
 	 * Takes the file name and then reads the data from file and stores students in list
 	 * @param s is the file name
 	 */
-	public void loadDataFromFile(String s) {
+	public void loadDataFromFile (String s) throws FileNotFoundException {
 		
 		FileReader reader = null;
 		
-		try {
+		
 			reader = new FileReader(s);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 		Scanner in = new Scanner(reader);
 		
 		while(in.hasNextLine()){
-		String str = in.nextLine();
+		String scorecatch= "";
+		String str="";
+		
+		
 		//in.nextLine();
-		int score = Integer.parseInt(in.nextLine());
+		try{
+			
+			
+			
+		str = in.nextLine();
+		scorecatch= in.nextLine();
+		int score = Integer.parseInt(scorecatch);
 		Student stu = new Student(str,score);
 		list.add(stu);
+		}catch( NumberFormatException score ){
+			System.out.println("Incorrect format for "+ str + " not a valid score: "+ scorecatch);
+		}
+		
 		}
 		
 		
@@ -45,11 +56,22 @@ public class ScoreTrakker {
 			System.out.println(x);
 		}
 		
-		
+		list.clear();
 	}
 	public void processFiles() {
-		loadDataFromFile("scores.txt");
-		printInOrder();
+		
+		String iofile="";
+		for(String s: files){
+			try{
+			iofile=s;
+			loadDataFromFile(s);
+			printInOrder();
+			}catch(FileNotFoundException e){
+				System.out.println("Can't open File: "+ s);
+			}
+		}
+		
+		
 	}
 	
 	
